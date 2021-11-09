@@ -1,1 +1,40 @@
-site_name: My Docs
+site_name: BioArchLinux wiki
+site_author: BioArchLinux wiki team
+
+# Theme
+theme:
+  name: material
+  logo: "icon/logo.png"
+  favicon: "icon/favicon.png"
+  palette:
+    accent: light blue
+  icon:
+    repo: fontawesome/brands/github-alt
+  features:
+    - header.autohide
+    - navigation.tabs
+    - navigation.top
+# Plugins
+plugins:
+  - search
+  - i18n:
+      default_language: en
+      languages:
+        en: English
+        zh: 中文
+
+# Reository
+repo_name: BioArchLinux/wiki
+repo_url: https://github.com/BioArchLinux/wiki
+edit_uri: ""
+
+# Copyright
+copyright: Copyright &copy; 2021 ~ BioArchLinux wiki team
+
+# style
+extra_css:
+  - style/custom.css
+
+# delete
+extra:
+  generator: false
