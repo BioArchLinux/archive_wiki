@@ -16,7 +16,7 @@
     
     
       
-        <title>Contibution - BioArchLinux wiki</title>
+        <title>部署 - BioArchLinux wiki</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pkgbuild" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Contibution
+              部署
             
           </span>
         </div>
@@ -114,7 +114,7 @@
             <ul class="md-select__list">
               
                 <li class="md-select__item">
-                  <a href="../../contibution/" hreflang="en" class="md-select__link">
+                  <a href="../../deploy/" hreflang="en" class="md-select__link">
                     English
                   </a>
                 </li>
@@ -199,18 +199,6 @@
 
 
   <li class="md-tabs__item">
-    <a href="../CODE_OF_CONDUCT/" class="md-tabs__link">
-      Contributor Covenant Code of Conduct
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
     <a href="../CONTRIBUTING/" class="md-tabs__link">
       贡献
     </a>
@@ -226,7 +214,7 @@
 
   <li class="md-tabs__item">
     <a href="./" class="md-tabs__link md-tabs__link--active">
-      Contibution
+      部署
     </a>
   </li>
 
@@ -238,7 +226,7 @@
 
   <li class="md-tabs__item">
     <a href="../" class="md-tabs__link">
-      Packages
+      Index
     </a>
   </li>
 
@@ -311,21 +299,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../CODE_OF_CONDUCT/" class="md-nav__link">
-        Contributor Covenant Code of Conduct
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../CONTRIBUTING/" class="md-nav__link">
         贡献
       </a>
@@ -347,14 +320,16 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Contibution
+          部署
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Contibution
+        部署
       </a>
       
         
@@ -363,6 +338,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -475,14 +452,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     使用
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     致谢
   </a>
   
@@ -505,7 +482,7 @@
   
     <li class="md-nav__item">
       <a href="../" class="md-nav__link">
-        Packages
+        Index
       </a>
     </li>
   
@@ -522,18 +499,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_5">
+        <label class="md-nav__link" for="__nav_4">
           Packages
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Packages" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
+        <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Packages
         </label>
@@ -574,7 +551,7 @@
   
     <li class="md-nav__item">
       <a href="../packages/jmodeltest/" class="md-nav__link">
-        jModelTest的使用
+        jModelTest
       </a>
     </li>
   
@@ -661,6 +638,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -772,14 +751,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     使用
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     致谢
   </a>
   
@@ -798,9 +777,8 @@
               
                 
                 
-                  <h1>Contibution</h1>
-                
-                <p>本文将介绍如何使用 ArchLinuxCN 的 python 脚本 <a href="https://github.com/archlinuxcn/lilac">lilac</a> 以及 <a href="https://github.com/lilydjwg">依云</a>的 <a href="https://github.com/lilydjwg/archrepo2">archrepo2</a> 脚本去构建自己的 ArchLinux 软件仓库。使用这两个脚本是因为很多时候软件维护只需要修改哈希值以及版本号一类的工作，而人不可能总盯着网站看，所以更新难免不及时，<code>lilac</code>和<code>archrepo2</code>解决的就是这个问题，可以帮助节省大部分的人力去维护仓库。</p>
+                <h1 id="_1">部署</h1>
+<p>本文将介绍如何使用 ArchLinuxCN 的 python 脚本 <a href="https://github.com/archlinuxcn/lilac">lilac</a> 以及 <a href="https://github.com/lilydjwg">依云</a>的 <a href="https://github.com/lilydjwg/archrepo2">archrepo2</a> 脚本去构建自己的 ArchLinux 软件仓库。使用这两个脚本是因为很多时候软件维护只需要修改哈希值以及版本号一类的工作，而人不可能总盯着网站看，所以更新难免不及时，<code>lilac</code>和<code>archrepo2</code>解决的就是这个问题，可以帮助节省大部分的人力去维护仓库。</p>
 <p>之前有提到 ArchLinux 是一个社区驱动、易于参与的 Linux 发行版，本文也将顺带提及一些参与其中的一些基本操作。如有纰漏错误，劳烦指正。</p>
 <h2 id="pkgbuild">PKGBUILD</h2>
 <p>ArchLinux 的软件包一般都过 Shell 脚本 PKGBUILD 进行构建，相比于 Debian 系、RH 系，容易了不少。</p>
@@ -1201,7 +1179,7 @@ server {
 <pre><code>sudo systemctl enable nginx
 sudo systemctl restart nginx
 </code></pre>
-<h2 id="_1">使用</h2>
+<h2 id="_2">使用</h2>
 <p>到这里你的仓库就已经可以使用了，这里我以 BioArchLinux 为例，在你本机的电脑里修改<code>/etc/pacman.conf</code></p>
 <pre><code>sudo vim /etc/pacman.conf
 </code></pre>
@@ -1219,7 +1197,7 @@ sudo pacman-key --lsign-key B1F96021DB62254D
 <pre><code>sudo pacman -Syu
 </code></pre>
 <p>就可以使用了</p>
-<h2 id="_2">致谢</h2>
+<h2 id="_3">致谢</h2>
 <p>感谢  <a href="https://github.com/lilydjwg">依云</a> 在 lilac 配置和使用方面所给予的帮助，同时也感谢 <a href="https://github.com/petronny">Jingbei Li</a> 在 lilac 配置时给予的帮助。另感谢一位 TG 不愿意透露姓名的大叔叔检查我书写的低级错误的，还有 <a href="https://github.com/NotYuhang">NotYu</a> 在正则上面给予的帮助。</p>
 <p>PS：如果本文有任何疏漏和错误，跟上述各位毫无关系，只跟菜菜的我有关系。希望多多包涵。上述操作的成果即是 <a href="https://github.com/BioArchLinux/Packages">BioArchLinux</a> 仓库，一个针对生信软件的仓库，如果感兴趣可以多多使用、参与进来，也欢迎 star 。</p>
                 
@@ -1262,13 +1240,13 @@ sudo pacman-key --lsign-key B1F96021DB62254D
       
       
         
-        <a href="../" class="md-footer__link md-footer__link--next" aria-label="下一页: Packages" rel="next">
+        <a href="../" class="md-footer__link md-footer__link--next" aria-label="下一页: Index" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              Packages
+              Index
             </div>
           </div>
           <div class="md-footer__button md-icon">
