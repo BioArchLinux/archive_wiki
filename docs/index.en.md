@@ -1,4 +1,4 @@
-# Packages
+# Index
 Scripts of Lilac Repo, including PKGBUILD, lilac.yaml and lilac.py
 
 ## Aim

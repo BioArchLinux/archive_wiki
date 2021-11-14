@@ -1,3 +1,5 @@
+# 部署
+
 本文将介绍如何使用 ArchLinuxCN 的 python 脚本 [lilac](https://github.com/archlinuxcn/lilac) 以及 [依云](https://github.com/lilydjwg)的 [archrepo2](https://github.com/lilydjwg/archrepo2) 脚本去构建自己的 ArchLinux 软件仓库。使用这两个脚本是因为很多时候软件维护只需要修改哈希值以及版本号一类的工作，而人不可能总盯着网站看，所以更新难免不及时，`lilac`和`archrepo2`解决的就是这个问题，可以帮助节省大部分的人力去维护仓库。
 
 之前有提到 ArchLinux 是一个社区驱动、易于参与的 Linux 发行版，本文也将顺带提及一些参与其中的一些基本操作。如有纰漏错误，劳烦指正。
