@@ -23,7 +23,7 @@ All the todo list for this repository is fixed at Projects. For contributing to 
 
 ### Pull Request
 
-For contributing to this repository, we would like to invite you as a member of this organization. About the details, see the [English contribution guide](./CONTRIBUTING_EN.md) or the [Chinese contribution guide](./CONTRIBUTING.md ).
+For contributing to this repository, we would like to invite you as a member of this organization. About the details, see the [English contribution guide](./CONTRIBUTING.en.md) or the [Chinese contribution guide](./CONTRIBUTING.zh.md), details are in Chinese, can see [here](./contribution.zh.md).
 
 ### Discussions
 
