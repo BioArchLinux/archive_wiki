@@ -1,4 +1,4 @@
-# jModelTest的使用
+# jModelTest
 
 [下载地址][4]，必须在java环境下运行。
 
