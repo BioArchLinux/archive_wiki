@@ -1,13 +1,14 @@
 # Index
-Scripts of Lilac Repo, including PKGBUILD, lilac.yaml and lilac.py
+Aim to be the bioinformatics repository with more and newer packages
 
 ## Aim
 
 ### Current goal
 
- - Migrate about 50 packages from aur_build to lilac.
  - Expansion of the users' awareness of this repository.
  - Include more popular packages for biologists.
+
+ - Migrate about 50 packages from aur_build to lilac. [finished 06-11-2021]
 
 ### Todo
 
@@ -19,11 +20,11 @@ Or some undergraduate students can hold a [National Students' Innovation Entrepr
 
 ### Todo List
 
-All the todo list for this repository is fixed at Projects. For contributing to new packages, see [packages todo list](https://github.com/BioArchLinux/Packages/projects/1), the in progress column shows the packages which are needed to be fixed, and the todo list column contains the packages which are needed to build and update to this repository. For fixing the bugs, see the [bug todo list](https://github.com/BioArchLinux/Packages/projects/2), the issues reporting bugs will be moved to the todo column of this project.
+All the todo list for this repository is fixed at Projects. For contributing to new packages, see [packages todo list](https://github.com/BioArchLinux/Packages/projects/3), the in progress column shows the packages which are needed to be fixed, and the todo list column contains the packages which are needed to build and update to this repository. For fixing the bugs, see the [bug todo list](https://github.com/BioArchLinux/Packages/projects/2), the issues reporting bugs will be moved to the todo column of this project.
 
 ### Pull Request
 
-For contributing to this repository, we would like to invite you as a member of this organization. About the details, see the [English contribution guide](./CONTRIBUTING.en.md) or the [Chinese contribution guide](./CONTRIBUTING.zh.md), details are in Chinese, can see [here](./contribution.zh.md).
+For contributing to this repository, we would like to invite you as a member of this organization. About the details, see the [English contribution guide](./CONTRIBUTING_EN.md) or the [Chinese contribution guide](./CONTRIBUTING.md ).
 
 ### Discussions
 
@@ -41,12 +42,14 @@ For bug reports, just posts some [issues](https://github.com/BioArchLinux/Packag
 
 If you would like to join us, try to contact [starsareintherose](mailto:guoyizhang@malacology.net). Better to introduce what you want to do in our organization.
 
+Or you can communicate at IRC channel #bioarchlinux at Libera Chat.
+
 ## Usage
 
 Add the fllowing to the `/etc/pacman.conf`
 ```
 [BioArchLinux]
-Server = https://repo.malacology.net/
+Server = https://repo.malacology.net/$arch
 ```
 Then import GPG key
 ```
@@ -62,3 +65,4 @@ License is [GPL version 3](./LICENSE) and Code of Conduct is [here](./CODE_OF_CO
 ## Acknowledgments
 
 Thanks go to [lilydjwg](https://github.com/lilydjwg), the creator of lilac, for her help on lilac. It's grateful for all the users for using this repository and supporting BioArchLinux.
+
