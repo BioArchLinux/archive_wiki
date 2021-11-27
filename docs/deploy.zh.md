@@ -73,7 +73,7 @@ ArchLinux 的软件包一般都过 Shell 脚本 PKGBUILD 进行构建，相比�
 SSH Key
 -------
 
-因为要使用 Git 托管平台疑惑是 AUR，需要管理 SSH 相关的 key。
+因为要使用 Git 托管平台抑或是 AUR，需要管理 SSH 相关的 key。
 
 因此安装`openssh`包
 
