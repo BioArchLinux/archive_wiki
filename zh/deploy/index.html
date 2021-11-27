@@ -837,7 +837,7 @@ package() {
 </code></pre>
 <p>自然也可以通过<code>devtools</code>打包，好处是可以在一个干净的环境下打包，但是如果遇见需要依赖非官方仓库包的情况，就会比较麻烦，最好使用下文提到的<code>archrepo2</code>脚本生成本地仓库，然后将本地的仓库写入<code>/usr/share/devtools</code>下对应的<code>conf</code>文件，比如，如果要使用<code>extra</code>c仓库打包，则应该修改<code>pacman-extra.conf</code>文件，添加形式，可见下文使用章节。</p>
 <h2 id="ssh-key">SSH Key</h2>
-<p>因为要使用 Git 托管平台疑惑是 AUR，需要管理 SSH 相关的 key。</p>
+<p>因为要使用 Git 托管平台抑或是 AUR，需要管理 SSH 相关的 key。</p>
 <p>因此安装<code>openssh</code>包</p>
 <pre><code>sudo pacman -S openssh
 </code></pre>
