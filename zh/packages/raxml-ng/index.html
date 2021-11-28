@@ -16,7 +16,7 @@
     
     
       
-        <title>Gblocks - BioArchLinux wiki</title>
+        <title>raxml-ng - BioArchLinux wiki</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#gblocks" class="md-skip">
+        <a href="#raxml-ng" class="md-skip">
           跳转至
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Gblocks
+              raxml-ng
             
           </span>
         </div>
@@ -114,13 +114,13 @@
             <ul class="md-select__list">
               
                 <li class="md-select__item">
-                  <a href="../../../packages/gblocks/" hreflang="zh" class="md-select__link">
+                  <a href="../../../packages/raxml-ng/" hreflang="zh" class="md-select__link">
                     中文
                   </a>
                 </li>
                 
                 <li class="md-select__item">
-                  <a href="../../../en/packages/gblocks/" hreflang="en" class="md-select__link">
+                  <a href="../../../en/packages/raxml-ng/" hreflang="en" class="md-select__link">
                     English
                   </a>
                 </li>
@@ -357,49 +357,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Gblocks
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../gblocks/" class="md-nav__link">
         Gblocks
       </a>
-      
-        
-
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#gblocks" class="md-nav__link">
-    GBlocks的使用
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -479,11 +441,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../raxml-ng/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         raxml-ng
       </a>
+      
     </li>
   
 
@@ -527,21 +499,8 @@
   
   
   
+    
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#gblocks" class="md-nav__link">
-    GBlocks的使用
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -554,83 +513,14 @@
               
                 
                 
-                  <h1>Gblocks</h1>
-                
-                <p>在将序列放入系统发育的计算软件（e.g.MrBayes, RAxML等）前，应当先对序列进行一定的处理，具体流程是先进行比对(MAFFT)，再进行保守区的选择（GBlocks），之后饱和度检验(DAMBE，Tracer)，再是最适模型的选择（jModelTest）。</p>
-<!--more-->
-
-<h2 id="gblocks">GBlocks的使用</h2>
-<p><a href="http://molevol.cmima.csic.es/castresana/Gblocks.html">下载地址</a>
-将exampleout.fas移入Gblocks.exe的根文件夹，注意序列文件的名称不能过长或者含有一些非法符号，不然会闪退。</p>
-<pre><code>******************************************************
-                    GBLOCKS 0.91b
-SELECTION OF CONSERVED BLOCKS FROM MULTIPLE ALIGNMENTS
-        FOR THEIR USE IN PHYLOGENETIC ANALYSIS
-******************************************************
-
-o. Open File
-
-b. Block Parameters
-
-s. Saving Options
-
-g. (Get Blocks)
-
-q. Quit
-
-
-Your Choice:
+                <h1 id="raxml-ng">raxml-ng</h1>
+<p>基本使用</p>
+<pre><code>raxml-ng --all --msa fas文件 --model GTR+G4 --prefix 名称 --bs-trees 1000
 </code></pre>
-<p>选择o</p>
-<pre><code>Please enter a DNA or protein alignment in NBRF/PIR or FASTA format or a paths file.
-File Name:
-</code></pre>
-<p>输入<code>exampleout.fas</code></p>
-<pre><code>******************************************************
-                    GBLOCKS 0.91b
-SELECTION OF CONSERVED BLOCKS FROM MULTIPLE ALIGNMENTS
-        FOR THEIR USE IN PHYLOGENETIC ANALYSIS
-******************************************************
-
-CURRENT FILE: exampleout.fas
-t. Type Of Sequence: Protein
-
-o. Open File
-
-b. Block Parameters
-
-s. Saving Options
-
-g. Get Blocks
-
-q. Quit
-
-
-Your Choice:
-</code></pre>
-<p>此时可以选择<code>b</code>更改一些数值</p>
-<p>BLOCK PARAMETERS</p>
-<pre><code>1. Minimum Number Of Sequences For A Conserved Position: . 21
-2. Minimum Number Of Sequences For A Flank Position: ..... 34
-3. Maximum Number Of Contiguous Nonconserved Positions: .. 8
-4. Minimum Length Of A Block: ............................ 10
-5. Allowed Gap Positions: ................................ None
-
-r. Restore Defaults
-g. Get Blocks
-
-z. Extended Block Options
-m. Go To Main Menu
-
-
-Your Choice:
-</code></pre>
-<p>输入对应选项可以修改，也可以不修改，此处不修改，直接选择<code>g</code></p>
-<pre><code>exampleout.fas
-Original alignment: 1085 positions
-Gblocks alignment:  81 positions (7 %) in 4 selected block(s)
-</code></pre>
-<p>此时根目录里<code>exampleout.fas-gb.htm</code>是保守区选择信息，将<code>exampleout.fas-gb</code>修改为<code>exampleoutgb.fas</code>或者其它以<code>fas</code>结尾的文件，得到了选择了保守区的序列。</p>
+<p><code>-msa</code> 比对好的序列文件</p>
+<p><code>--model</code> 模型，可以参照 modeltest-ng 的输出</p>
+<p><code>--prefix</code> 前缀</p>
+<p><code>--bs-trees</code> BootStrap 树的个数</p>
                 
               
               
@@ -655,7 +545,7 @@ Gblocks alignment:  81 positions (7 %) in 4 selected block(s)
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../dambe/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Dambe" rel="prev">
+        <a href="../paup*/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Paup*" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -664,20 +554,20 @@ Gblocks alignment:  81 positions (7 %) in 4 selected block(s)
               <span class="md-footer__direction">
                 上一页
               </span>
-              Dambe
+              Paup*
             </div>
           </div>
         </a>
       
       
         
-        <a href="../jmodeltest/" class="md-footer__link md-footer__link--next" aria-label="下一页: jModelTest" rel="next">
+        <a href="../tiger/" class="md-footer__link md-footer__link--next" aria-label="下一页: Tiger" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              jModelTest
+              Tiger
             </div>
           </div>
           <div class="md-footer__button md-icon">
