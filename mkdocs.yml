@@ -18,7 +18,7 @@ theme:
 plugins:
   - search
   - i18n:
-      default_language: zh
+      default_language: en
       languages:
         en: English
         zh: 中文
