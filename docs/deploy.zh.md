@@ -146,7 +146,7 @@ Git 托管平台
 
 并且要以`NON_ROOT_USER`身份生成 SSH Key ，以访问  GitHub 仓库。
 
-    ssh-keygen -t rsa -C starsareintherose@outlook.com -f ~/.ssh/git
+    ssh-keygen -t rsa -C YOUR_EMAIL -f ~/.ssh/git
 
     cd ~/.ssh
     cat git.pub #查看
@@ -269,6 +269,7 @@ lilac & archrepo2 部署
     Description=Runs lilac very 6 hour
     
     [Timer]
+    OnBootSec=30s
     OnUnitActiveSec=6h
     Unit=lilac.service
     

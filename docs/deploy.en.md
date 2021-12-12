@@ -1,4 +1,4 @@
-# 部署
+# Deploy
 
 This article will introduce how to use the python script [lilac](https://github.com/archlinuxcn/lilac) and [archrepo2](https://github.com/lilydjwg/archrepo2) written by [依云](https://github.com/lilydjwg) to build your own ArchLinux repository. People cannot always pay attention to the pkg ver changes when it is updated, and sometimes maintainers only need to change the sums and pkgver, this is the problem that `lilac` and `archrepo2` mainly solved, it can save our efforts to maintain the repository.
 
@@ -126,52 +126,52 @@ GPG Key
 
 GPG Key sign is the feature of an formal ArchLinux. One pkg file should have its own `sig` file correspending.
 
-如果要生成密钥，应该在非root用户下使用以下命令。因为这个用户今后要用于运行`lilac`和`archrepo2`
+Generate GPG Key should be run using non-root user, this non-root user will be used for runing `lilac` and `archrepo2`. The following command is to generate the gpg key.
 
     gpg --full-gen-key
 
-一切都可以选择默认，但是不要设置密码。记住 KEY\_ID 即可
+All the setting can be default but the secrets password, don not set it. Remember your KEY\_ID.
 
-之后应该把 GPG Key 上传，Ubuntu 的 keyserver 国内用比较稳定（也不知道为什么）
+Then you should upload your GPG Key to the GPG server, the Ubuntu keyserver is stable for Chinese users. 
 
     gpg --keyserver hkp://keyserver.ubuntu.com --send-keys KEY_ID
 
-Git 托管平台
+Git platform
 --------
 
-因为`lilac`需要 git 仓库，所以最好需要一个脚本的 git 托管平台，这里以比较流行的 GitHub 为例。
+Considering the needs of `lilac`, git repo is essentail. Here use the GitHub as example.
 
-首先如果你为仓库维护者，应该在`Settings` > `Profile`中设置好`Public email`，不然`lilac`探测不到，会报错。
+Firstly, if you are the package maintainer, you should public your email, `Settings` > `Profile` set `Public email`, or `lilac` won't find you and will report error。
 
-并且要以`NON_ROOT_USER`身份生成 SSH Key ，以访问  GitHub 仓库。
+and generate SSH Key using the `NON_ROOT_USER` to access the GitHub repo.
 
-    ssh-keygen -t rsa -C starsareintherose@outlook.com -f ~/.ssh/git
+    ssh-keygen -t rsa -C YOUR_EMAIL -f ~/.ssh/git
 
     cd ~/.ssh
-    cat git.pub #查看
+    cat git.pub #view
 
-在 `Settings` > `SSH key` 添加 cat 出的内容。
+and add the content of cat to `Settings` > `SSH key`.
 
-此时，可以新建一个仓库，然后使用 ssh 的方式把仓库 clone 到服务器，这里以我维护的仓库为例子。
+At the same time, you can create a new repo, and use the ssh method to upload files to the remote repo. On the server, you should clone the packages repo.
 
     git clone git@github.com:BioArchLinux/Packages.git
 
-这里 clone 下拉的文件夹就是今后`lilac`的`REPO_DIR`。一般我是把各个包作为一个文件夹，文件夹里有 PKGBUILD 还有 lilac 的各个包的配置文件，放置于`REPO_DIR`下。
+The path of this dir is the `REPO_DIR` for the lilac. Generally, I sperately put every package in one standalone dir. The standalone dir should contain PKGBUILD, lilac.yaml and lilac.py.
 
-lilac & archrepo2 部署
+lilac & archrepo2 Deploy
 --------------------
 
-`lilac`依赖`nvchecker`进行版本检测，之后对 PKGBUILD 进行一定的修改进行版本的更新，进行打包，并且将打好的包放进一个指定的文件夹中。`archrepo2`则是对一个指定的文件夹中的包进行架构的划分一类的操作，生成仓库的数据库。
+The version check function of `lilac` depends on the `nvchecker`, and then mod the PKGBUILD to update the pkgver for packaging, and then put the ArchLinux packages into a specific dir. `archrepo2` can divide the packages into different arch dir and generate database for this repo.
 
 ### lilac
 
-安装 `lilac` 可以从 AUR 中安装，也可以从 archlinuxcn 的仓库下载，这里以 AUR 为示例（如果从 AUR 中安装，则需要在非root用户下运行）
+Install `lilac` can be done via AUR or archlinuxcn repo. Here the command is to install `lilac` from AUR.
 
     yay -S lilac-git
 
-下载完成后，需要配置各种设置，lilac的设置是在`~/.lilac/config.toml`处，需要自己配置，而且`~`应该为在非root用户的`/home/NON_ROOT_USER`，因为`makepkg`命令无法在root下运行。
+After installing it, configure is crucail. the config of lilac is `~/.lilac/config.toml`, you should write it by yourself, and `~` should be the non-root user's `/home/NON_ROOT_USER`, considering `makepkg` command can run under root.
 
-下面为我的基本配置，主意将`YOUR_REPO_NAME`，`NON_ROOT_USER`，`PACKAGES_SCRIPT_DIR`，`REPO_DIR`，`YOUR_NAME`，`YOUR_EMAIL`替换成你的相关信息。其中`YOUR_REPO_NAME`就是和`extra`，`community`一类的 Arch 仓库同类别的名字，到时候是要写入`/etc/pacman.conf`中去的，而`PACKAGES_SCRIPT_DIR`就是你存有`PKGBUILD`文件的地方，而`REPO_DIR`则是需要通过 Nginx 一类的软件变成可被公网访问仓库的所在文件，同时，这个文件夹也应该是`archrepo2`应该处理的文件夹。
+The following is my basic config file, please replace `YOUR_REPO_NAME`, `NON_ROOT_USER`, `PACKAGES_SCRIPT_DIR`, `REPO_DIR`, `YOUR_NAME`, `YOUR_EMAIL` with your own infomation.Attention, `YOUR_REPO_NAME` is same as the offical repository called `extra`，`community`, will be written into `/etc/pacman.conf`, and `PACKAGES_SCRIPT_DIR` is the path of the dir containing `PKGBUILD` files, and `REPO_DIR` is the repository path. Nginx will let `REPO_DIR` become the website can be visited, and this dir is also the dir `archrepo2` works on.
 
     [envvars]
     TZ = "Asia/Shanghai"
@@ -226,30 +226,30 @@ lilac & archrepo2 部署
     "~/.cargo" = "/build/.cargo"
     "~/go" = "/build/go" 
 
-除此之外，运行lilac的用户应该处于`pkg`用户组
+The non-root user running lilac should under the `pkg` user group
 
     sudo usermod -G pkg NON_ROOT_USER
 
-因为`makepkg`需要密码，为了lilac能在后台运行需要进行用户sudo免密码的操作
+considering the `makepkg` needs passwd, use the following command to let lilac run without passwd for sudo command.
 
     su root
     vim /etc/sudoers
 
-添加如下内容
+add follwing content
 
     NON_ROOT_USER ALL = (ALL) NOPASSWD:ALL
 
-但是光是如此，仍然无法让lilac在后台运行，需要运行一下命令修改一下登录配置
+But if you want to run lilac in the background, it's not enough, you should run the follwing command to change login config.
 
     sudo loginctl enable-linger NON_ROOT_USER
 
-定时运行则需要写一下systemd脚本
+To run regularly, you need to write a systemd script.
 
     cd /usr/lib/systemd/system 
 
     sudo vim lilac.service
 
-添加如下内容
+Add following content
 
     [Unit]
     Description=lilac
@@ -260,38 +260,41 @@ lilac & archrepo2 部署
     Type=simple
     ExecStart=/usr/bin/lilac
 
+Then edit lilac.timer
+
     sudo vim lilac.timer
 
-添加如下内容
+add following command
 
     [Unit]
     Description=Runs lilac very 6 hour
     
     [Timer]
+    OnBootSec=30s
     OnUnitActiveSec=6h
     Unit=lilac.service
     
     [Install]
     WantedBy=multi-user.target
 
-运行以下命令使脚本生效
+run the following command to let it work
 
     sudo systemctl enable lilac.timer
     sudo systemctl start lilac.timer
 
-如果要想手动运行`lilac`，以配置的`NON_ROOT_USER`运行`lilac`即可。
+You can also manually run the `lilac`, just type `lilac` under your `NON_ROOT_USER`
 
-log则可以在`~/.lilac/log`下找到，通常都以时间为文件夹，文件夹下必有`lilac-main.log`还有其他以包命名的单独的 log 文件
+log can be found under the dir`~/.lilac/log`, generally is the dir named by time, every time dir must have `lilac-main.log` and other log for building packages sperately.
 
 ### archrepo2
 
-安装也是可以从 archlinuxcn 仓库或者 AUR 安装
+You can install it via AUR or archlinuxcn repo
 
     yay -S archrepo2-git
 
-`archrepo2`的配置文件位于`/etc/archrepo2.ini`
+The config file of `archrepo2` is `/etc/archrepo2.ini`
 
-一般只需要修改配置的三处，均位于`[repository]`下 ，主意将`YOUR_REPO_NAME`，`NON_ROOT_USER`，`REPO_DIR`与`lilac`配置的相同即可
+You need to change three settings, all is under `[repository]`, please keep step with the `lilac` config, especially for `YOUR_REPO_NAME`, `NON_ROOT_USER`, `REPO_DIR`
 
     [repository]
     # Name of the repository. In below example the Pacman repository db file name
@@ -308,15 +311,15 @@ log则可以在`~/.lilac/log`下找到，通常都以时间为文件夹，文件
     # Should be used with auto-rename on
     spool-directory: /home/NON_ROOT_USER/REPO_DIR
 
-运行`archrepo2`使用如下命令
+Manually run `archrepo2` using the follow command
 
     /usr/bin/archreposrv /etc/archrepo2.ini
 
-若要开机自启动，`systemd`操作如下
+To make it always work, using `systemd`
 
     systemctl enable archrepo2
 
-lilac 脚本编写
+lilac script writing
 ----------
 
 跟`PKGBUILD`同目录下，一般可以有`lilac.yaml`和`lilac.py`两个文件。
