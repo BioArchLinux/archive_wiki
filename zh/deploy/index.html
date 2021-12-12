@@ -906,7 +906,7 @@ git push
 <p>因为<code>lilac</code>需要 git 仓库，所以最好需要一个脚本的 git 托管平台，这里以比较流行的 GitHub 为例。</p>
 <p>首先如果你为仓库维护者，应该在<code>Settings</code> &gt; <code>Profile</code>中设置好<code>Public email</code>，不然<code>lilac</code>探测不到，会报错。</p>
 <p>并且要以<code>NON_ROOT_USER</code>身份生成 SSH Key ，以访问  GitHub 仓库。</p>
-<pre><code>ssh-keygen -t rsa -C starsareintherose@outlook.com -f ~/.ssh/git
+<pre><code>ssh-keygen -t rsa -C YOUR_EMAIL -f ~/.ssh/git
 
 cd ~/.ssh
 cat git.pub #查看
@@ -1012,6 +1012,7 @@ sudo vim lilac.timer
 Description=Runs lilac very 6 hour
 
 [Timer]
+OnBootSec=30s
 OnUnitActiveSec=6h
 Unit=lilac.service
 
