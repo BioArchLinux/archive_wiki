@@ -52,7 +52,7 @@ It usually contains `pkgname`, `pkgver`, `pkgrel`，description `pkgdesc`, `arch
 
 `prepare() { }`, `build() { }` and `package() { }` sperately contain shell scripts of preparing source files, building package, and installing them to the $pkgdir. And `package` can enter the fakeroot enviroment. There are also two functions called `pkgver()` and `check()`.
 
-`"$srcdir"` and `"$pkgdir"` are the two main dir, `srcdir` contains the source code or pre-compiled binary from the source, and `pkgdir` is a fakeroot dir, containging the binary or other files will be installed. If you want to install the binary `BINARY` from srcdir to `/usr/bin/BINARY`，you should write the `package()` follwing the followed examples.
+`"$srcdir"` and `"$pkgdir"` are the two main dir, `srcdir` contains the source code or pre-compiled binary from the source, and `pkgdir` is a fakeroot dir, containging the binary or other files will be installed. If you want to install the binary `BINARY` from srcdir to `/usr/bin/BINARY`，you should write the `package()` following the followed examples.
 
     package() {
       cd ${srcdir}
@@ -82,7 +82,7 @@ and use the following command to generate ssh key
 
     ssh-keygen -t ed25519 -f ~/.ssh/aur
 
-use follwing command to check public key
+use following command to check public key
 
     cd ~/.ssh
     cat aur.pub
@@ -117,7 +117,7 @@ Then you can use git to update it
     git commit -m "some description"
     git push
 
-Now you maitain this package, if you donnot want to continue maintaining it, click `Disown Package`. If you have clean all the extra files for the AUR, you can replace the first line command with the follwing.
+Now you maitain this package, if you donnot want to continue maintaining it, click `Disown Package`. If you have clean all the extra files for the AUR, you can replace the first line command with the following.
 
     git add .
 
@@ -158,7 +158,7 @@ At the same time, you can create a new repo, and use the ssh method to upload fi
 
 The path of this dir is the `REPO_DIR` for the lilac. Generally, I sperately put every package in one standalone dir. The standalone dir should contain PKGBUILD, lilac.yaml and lilac.py.
 
-lilac & archrepo2 Deploy
+lilac & archrepo2 deploy
 --------------------
 
 The version check function of `lilac` depends on the `nvchecker`, and then mod the PKGBUILD to update the pkgver for packaging, and then put the ArchLinux packages into a specific dir. `archrepo2` can divide the packages into different arch dir and generate database for this repo.
@@ -235,11 +235,11 @@ considering the `makepkg` needs passwd, use the following command to let lilac r
     su root
     vim /etc/sudoers
 
-add follwing content
+add following content
 
     NON_ROOT_USER ALL = (ALL) NOPASSWD:ALL
 
-But if you want to run lilac in the background, it's not enough, you should run the follwing command to change login config.
+But if you want to run lilac in the background, it's not enough, you should run the following command to change login config.
 
     sudo loginctl enable-linger NON_ROOT_USER
 
@@ -322,62 +322,60 @@ To make it always work, using `systemd`
 lilac script writing
 ----------
 
-跟`PKGBUILD`同目录下，一般可以有`lilac.yaml`和`lilac.py`两个文件。
+The lilac script should be at the same dir of `PKGBUILD`, generally, there are two files called `lilac.yaml` and `lilac.py`.
 
 ### lilac.yaml
 
-其中`lilac.yaml`是较为重要的一个文件，里面包含若干`properties`，详见`lilac.yaml`的[文档](https://archlinuxcn.github.io/lilac/)。
+`lilac.yaml` is the more important file, containing serveral `properties`, for details, see the [document](https://archlinuxcn.github.io/lilac/) of lilac.yaml。
 
-重要的有几项`maintainers`，`build_prefix`，`update_on`以及`repo_depends`。
+The important parts of this file include `maintainers`, `build_prefix`, `update_on` and `repo_depends`.
 
-`build_prefix`是看看一些官方的依赖需要在哪个官方的 repository ，比如有的包需要 wine，而 wine 则是位于 `multilib`的仓库，则应该如此填写
+`build_prefix` is the where the depends from. For example, some packages need wine and wine is at offical `multilib` repo, so it can be written as
 
     build_prefix: multilib
 
-至于`maintainers`，一般是填写自己 GitHub 上的相关信息，有时候不填写邮箱，可能会报错，所以稳妥写法如下
+For `maintainers`, should input your GitHub information.Sometimes you donnot input your email, it will report error, so it's better to write like this.
 
     maintainers:
       - github: YOUR_USERNAME
         email: YOUR_PUBLIC_EMAIL
 
-`update_on`因为是使用`nvchecker`的，所以要查看`nvchcker`的[文档](https://nvchecker.readthedocs.io/en/latest/usage.html)。一般有几种写法，现在列举如下，一般如果 ARU 包管理者很勤奋或者上游维护的状态很不好，则可以这样。`strip_release`写为`true`是因为如果他自动基于 AUR，版本号会为`pkgver-pkgrel`，这样有`-`就不能作为版本号了，因为包含不允许的字符，这个参数是让去掉`-pkgrel`。
+`update_on` function uses `nvchecker`, so it's better to check the [documents](https://nvchecker.readthedocs.io/en/latest/usage.html) of nvchecker. There are serveral ways to do this. If your packages update depends on AUR, considering the AUR maintainers work well or the upstream is not easy to check. `strip_release` is better to be `true`, considering it will include `pkgver-pkgrel` into the repo package's pkgver，if the pkgver contain `-`, it cannot be the pkgver, this option let lilac remove the `-pkgrel`.
 
     update_on:
       - source: aur
         aur: tnt-gui
         strip_release: true
 
-如果你需要依赖于 GitHub 仓库，可参考如下写法。其中`ugeneunipro/ugene`是基于`https://github.com/ugeneunipro/ugene`，一些时候有些仓库步伐不 release，只发布 tag，则需要更换`use_latest_release`为`use_max_tag`。
+If the upstream is the GitHub repo, can refer the following writing method. For example, `ugeneunipro/ugene` points to`https://github.com/ugeneunipro/ugene`. Some repo donnot have the releases, only contain tags, the `use_latest_release` can be replaced with `use_max_tag`.
 
     update_on:
       - source: github
         github: ugeneunipro/ugene
         use_latest_release: true
 
-如果源不是一个被保存在`nvchcker`的[文档](https://nvchecker.readthedocs.io/en/latest/usage.html)提及的位置，则需要考虑使用正则，`url`是所在网址，而`regex`可以为页面直接匹配的文本。
+If the source is not stored at the url that [document](https://nvchecker.readthedocs.io/en/latest/usage.html) of nvchecker mentioned, you should consider to use regular expression.`url` is the page nvchecker can find sth, and `regex` is the text or element it matched.
 
     update_on:
       - regex: freedelta_(\d+.\d+.\d+)_amd64.deb
         source: regex
         url: https://sourceforge.net/projects/freedelta/files/freedelta/
 
-如果一些网页，出现一个 click here 一类的下载链接，则应该使用 F12 读取下 HTML 代码，下面有个示例，通过超链接来获取源。
-
     update_on:
       - source: regex
         url: http://doua.prabi.fr/software/seaview
         regex: href="seaview_data/seaview(\d+)-64\.tgz"
 
-除了上述提到的，还有些补偿用到的`from_pattern`，`to_pattern`，`include_regex`等等，都可以参考文档。
+Some settings are rarely mentioned, such as `from_pattern`, `to_pattern`, `include_regex` and so on, can refer the documents.
 
-`repo_depends`则是为了处理官方仓库没有所需依赖的情况，需要在仓库中打包完成依赖项后，在需要依赖的包的`lilac.yaml`文件中加入如下示例，`gconf`是需要被修改成你所需要依赖的。
+`repo_depends` is the setting dealing with depends not in the offical repo,`lilac.yaml` file should be like the following, `gconf` can be replaced the depends your package depends on.
 
     repo_depends:
       - gconf
 
 ### lilac.py
 
-以下是一个比较常用的`lilac.py`文件
+The usual `lilac.py` file should be like this
 
     #!/usr/bin/env python3
     
@@ -390,28 +388,28 @@ lilac script writing
       git_add_files('PKGBUILD')
       git_commit()
 
-其余可以参考`lilac.api`的[文档](https://lilac.readthedocs.io/en/latest/api.html)以及[archlinuxcn](https://github.com/archlinuxcn/repo)和[arch4edu](https://github.com/arch4edu/arch4edu)的仓库。
+Others can refer the [document](https://lilac.readthedocs.io/en/latest/api.html) of `lilac api` and scripts of [archlinuxcn repo](https://github.com/archlinuxcn/repo) and [arch4edu repo](https://github.com/arch4edu/arch4edu)。
 
-certbot 配置
+certbot config
 ----------
 
-一般较为正式的网站都会有 SSL 证书，这里使用 certbot 签发 SSL 证书。
+certbot can be used for signing SSL cert。
 
-使用 certbot 并配置 nginx 所需的证书需要安装如下两个包
+install certbot and needed nginx plugin, install the following two packages
 
     sudo pacman -S certbot
     sudo pacman -S certbot-nginx
 
-使用 certbot 申请证书但是不需要修改 Nginx 配置，可使用如下命令
+use certbot apply the cert but donnot want it to change Nginx config, run the following command
 
     certbot -d repo.YOUR_DOMAIN -m YOUR_EMAIL --nginx certonly
 
-会生成了两个证书，位置如下，这个位置在 Nginx 配置会用到
+The following key will be used for Nginx config
 
     Certificate is saved at: /etc/letsencrypt/live/repo.YOUR_DOMAIN/fullchain.pem
     Key is saved at:         /etc/letsencrypt/live/repo.YOUR_DOMAIN/privkey.pem
 
-若要自动续签证书可使用如下 systemd 脚本
+To continue signing the cert, use systemd script
 
     sudo vim /etc/systemd/system/letsencrypt.service
 
@@ -435,41 +433,42 @@ certbot 配置
     [Install]
     WantedBy=timers.target
 
-启动 systemd 的相关配置
+start systemd releated service
 
     sudo systemctl enable letsencrypt.timer
     sudo systemctl start letsencrypt.timer
 
-Nginx 配置
+
+Nginx config
 --------
 
-Nginx 可以使得仓库所在文件夹通过一定的域名访问。
+Nginx let the repo path can be visited
 
-首先需要安装 Nginx
+Firstly install Nginx
 
     sudo pacman -S nginx
 
-在 ArchLinux 中，Nginx 的配置文件存放于`/etc/nginx`下
+In ArchLinux, config files of Nginx is under the dir `/etc/nginx`
 
-如要方便配置多个站点可以修改`/etc/nginx/nginx.conf`
+If you want to config serveral sites easily, edit `/etc/nginx/nginx.conf`
 
     sudo vim /etc/nginx/nginx.conf
 
-在已有的`http { }`中添加如下一行，这个的意思，是`etc/nginx/conf.d`下的所有的`conf`文件都将生效，目前 ArchLinux 的 Nginx 不支持类似 Ubuntu 的配置方法即不支持软链接。
+add content udner the `http { }` section, the meaning of this content is conf files under `etc/nginx/conf.d` wil work.
 
     include       conf.d/*.conf;
 
-然后添加`conf.d`文件夹
+and then create the `conf.d` dir
 
     cd /etc/nginx/
     sudo mkdir conf.d
 
-然后可以在`conf.d`文件夹下配置`repo.YOUR_DOMAIN`
+add `repo.YOUR_DOMAIN` under the `/etc/nginx/conf.d`
 
     cd /etc/nginx/conf.d
     sudo vim repo.conf
 
-添加如下内容，将`repo.YOUR_DOMAIN`和`/YOUR/REPO/PATH`分别替换成你自己的域名和仓库文件夹。
+add the following content, replace`repo.YOUR_DOMAIN` and `/YOUR/REPO/PATH` with your own domain and repo dir.
 
     server {
     		listen 80;
@@ -499,40 +498,40 @@ Nginx 可以使得仓库所在文件夹通过一定的域名访问。
     
     }
 
-别忘了更新配置
+don not forget to restart nginx
 
     sudo systemctl enable nginx
     sudo systemctl restart nginx
 
-使用
+Usage
 --
 
-到这里你的仓库就已经可以使用了，这里我以 BioArchLinux 为例，在你本机的电脑里修改`/etc/pacman.conf`
+Now you can use your repo, here I give the example of BioArchLinux, edit the `/etc/pacman.conf` at your local host
 
     sudo vim /etc/pacman.conf
 
-添加如下内容，将`BioArchLinux`替换成你`lilac`中的`YOUR_REPO_NAME`，然后`Server`则是`https://repo.YOUR_DOMAIN/$arch`
+add the content, and replace `BioArchLinux` with the `YOUR_REPO_NAME` of your `lilac` and server `Server` is the `https://repo.YOUR_DOMAIN/$arch`
 
     [BioArchLinux]
     Server = https://repo.malacology.net/$arch
 
-可以将其放置于一定的位置，比如我知道，我不会用 ArchLinux 官方库的 tracer （一个与 BEAST 系列软件重名的软件），我就会把 BioArchLinux 的相关配置，在`/etc/pacman.conf`中放置于`core`和`extra`下方，`community`和`multilib`之上，这样就不会一直出现`community`里的 tracer 版本一类的提示了。
+ You can put it at a specific location, such as, I know tracer package from ArchLinux offical repo, but I won't use it and there is a tracer package from BioArchLinux, same name, but not the same thing, I will let BioArchLinux be upper than `community` and `multilib` in the `/etc/pacman.conf`.
 
-因为使用了 GPG 签名，所以要导入 GPG key，这里的`B1F96021DB62254D`便是 GPG Key 提到的`KEY_ID`。
+We use the GPG sign, so import GPG key into your local host, here `B1F96021DB62254D` is the `KEY_ID`。
 
     sudo pacman-key --recv-keys B1F96021DB62254D
     sudo pacman-key --finger B1F96021DB62254D
     sudo pacman-key --lsign-key B1F96021DB62254D
 
-之后，更新一下
+And then update
 
     sudo pacman -Syu
 
-就可以使用了
+Finally, you can enjoy it.
 
-致谢
+Acknowledgement
 --
 
-感谢  [依云](https://github.com/lilydjwg) 在 lilac 配置和使用方面所给予的帮助，同时也感谢 [Jingbei Li](https://github.com/petronny) 在 lilac 配置时给予的帮助。另感谢一位 TG 不愿意透露姓名的大叔叔检查我书写的低级错误的，还有 [NotYu](https://github.com/NotYuhang) 在正则上面给予的帮助。
+Thanks go to [依云](https://github.com/lilydjwg) for help on the usage and configuration of lilac, also thanks go to [Jingbei Li](https://github.com/petronny) for help on configuring of lilac. I am grateful to a TG friend for checking the code writing and [NotYu](https://github.com/NotYuhang) for help on regex。
 
-PS：如果本文有任何疏漏和错误，跟上述各位毫无关系，只跟菜菜的我有关系。希望多多包涵。上述操作的成果即是 [BioArchLinux](https://github.com/BioArchLinux/Packages) 仓库，一个针对生信软件的仓库，如果感兴趣可以多多使用、参与进来，也欢迎 star 。
+PS： The results of the article is [BioArchLinux](https://github.com/BioArchLinux/Packages), a repository for bioinformatics software.Welcome to use, participate and star.
