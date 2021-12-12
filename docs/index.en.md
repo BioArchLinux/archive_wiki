@@ -1,4 +1,7 @@
-# Index
+# wiki
+
+## BioArchLinux Repo
+
 Aim to be the bioinformatics repository with more and newer packages
 
 ## Aim
@@ -6,6 +9,7 @@ Aim to be the bioinformatics repository with more and newer packages
 ### Current goal
 
  - Expansion of the users' awareness of this repository.
+
  - Include more popular packages for biologists.
 
  - Migrate about 50 packages from aur_build to lilac. [finished 06-11-2021]
@@ -60,7 +64,7 @@ $ pacman-key --lsign-key B1F96021DB62254D
 
 ## License and Code of Conduct
 
-License is [GPL version 3](./LICENSE) and Code of Conduct is [here](./CODE_OF_CONDUCT.md).
+License is [AGPL version 3](https://github.com/BioArchLinux/Packages/blob/master/LICENSE) and Code of Conduct is [here](https://github.com/BioArchLinux/Packages/blob/master/CODE_OF_CONDUCT.md).
 
 ## Acknowledgments
 
