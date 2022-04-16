@@ -50,16 +50,16 @@ Or you can communicate at IRC channel #bioarchlinux at Libera Chat.
 
 ## Usage
 
-Add the fllowing to the `/etc/pacman.conf`
+Add the fllowing content to the `/etc/pacman.conf`
 ```
-[BioArchLinux]
+[bioarchlinux]
 Server = https://repo.bioarchlinux.org/$arch
 ```
-Then import GPG key
+You can repleace the `https://repo.bioarchlinux/$arch` with any mirror in [mirrorlist](https://raw.githubusercontent.com/BioArchLinux/mirror/main/mirrorlist.bio)
+
+install GPG keyring to use bioarchlinux
 ```
-$ pacman-key --recv-keys B1F96021DB62254D
-$ pacman-key --finger B1F96021DB62254D
-$ pacman-key --lsign-key B1F96021DB62254D
+sudo pacman -Sy && sudo pacman -S bioarchlinux-keyring
 ```
 
 ## License and Code of Conduct
