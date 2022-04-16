@@ -1,63 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
-         <loc>None</loc>
-         <lastmod>2021-12-27</lastmod>
+         <loc>CONTRIBUTING/</loc>
+         <lastmod>2022-04-16</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/CONTRIBUTING/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/CONTRIBUTING/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-12-27</lastmod>
+         <loc>deploy/</loc>
+         <lastmod>2022-04-16</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/deploy/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/deploy/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-12-27</lastmod>
+         <loc>.</loc>
+         <lastmod>2022-04-16</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-12-27</lastmod>
+         <loc>packages/dambe/</loc>
+         <lastmod>2022-04-16</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/packages/dambe/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/packages/dambe/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-12-27</lastmod>
+         <loc>packages/gblocks/</loc>
+         <lastmod>2022-04-16</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/packages/gblocks/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/packages/gblocks/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-12-27</lastmod>
+         <loc>packages/jmodeltest/</loc>
+         <lastmod>2022-04-16</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/packages/jmodeltest/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/packages/jmodeltest/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-12-27</lastmod>
+         <loc>packages/mafft/</loc>
+         <lastmod>2022-04-16</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/packages/mafft/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/packages/mafft/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-12-27</lastmod>
+         <loc>packages/modeltest-ng/</loc>
+         <lastmod>2022-04-16</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/packages/modeltest-ng/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/packages/modeltest-ng/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-12-27</lastmod>
+         <loc>packages/mrbayes/</loc>
+         <lastmod>2022-04-16</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/packages/mrbayes/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/packages/mrbayes/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-12-27</lastmod>
+         <loc>packages/paup%2A/</loc>
+         <lastmod>2022-04-16</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/packages/paup%2A/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/packages/paup%2A/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-12-27</lastmod>
+         <loc>packages/raxml-ng/</loc>
+         <lastmod>2022-04-16</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/packages/raxml-ng/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/packages/raxml-ng/"/>
+         
     </url>
     <url>
-         <loc>None</loc>
-         <lastmod>2021-12-27</lastmod>
+         <loc>packages/tiger/</loc>
+         <lastmod>2022-04-16</lastmod>
          <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/packages/tiger/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/packages/tiger/"/>
+         
     </url>
 </urlset>
